@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunil Singh - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            animation: backgroundShift 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-card {
+            text-align: center;
+            /* Removed width and max-width constraints to match other cards */
+            /* Removed min-height to let content determine height naturally */
+        }
+
+        .profile-card h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            animation: fadeInDown 0.8s ease-out 0.2s both;
+        }
+
+        .profile-card .title {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .social-item .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .social-item a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-item a:hover {
+            color:rgb(68, 71, 85);
+        }
+
+        .contact-item, .social-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+            transition: transform 0.2s ease;
+            animation: fadeInLeft 0.6s ease-out both;
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 0.6s; }
+        .contact-item:nth-child(2) { animation-delay: 0.7s; }
+        .contact-item:nth-child(3) { animation-delay: 0.8s; }
+        .contact-item:nth-child(4) { animation-delay: 0.9s; }
+        .social-item:nth-child(5) { animation-delay: 1.0s; }
+        .social-item:nth-child(6) { animation-delay: 1.1s; }
+
+        .contact-item:hover, .social-item:hover {
+            transform: translateX(5px);
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-item .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 5px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .about-text {
+            color: #666;
+            line-height: 1.6;
+            font-size: 16px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .project:hover {
+            background: #f0f2ff;
+            border-left: 4px solid #667eea;
+            transform: translateX(5px);
+        }
+
+        .project h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .project-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-category:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .skill-category:hover h4,
+        .skill-category:hover p {
+            color: white;
+        }
+
+        .skill-category h4 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .skill-category p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                gap: 15px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Card -->
+        <div class="card profile-card">
+            <h1>SUNIL SINGH</h1>
+            <p class="title">Full Stack Developer</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span>sunilsingh.rajput192@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📱</span>
+                    <span>+91 123456789</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🎂</span>
+                    <span>19 Years</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>JAMMU AND KASHMIR, India</span>
+                </div>
+                <div class="social-item">
+                    <span class="icon">🐱</span>
+                    <a href="https://github.com/sunilsingh175" target="_blank">github.com/sunilsingh175</a>
+                </div>
+                <div class="social-item">
+                    <span class="icon">💼</span>
+                    <a href="https://www.linkedin.com/in/sunil-singh-763769296" target="_blank">linkedin.com/in/sunil-singh-763769296</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- About Me -->
+            <div class="card">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">
+                    I'm an aspiring Full Stack Developer who enjoys building websites and web applications from scratch. I like working on both the frontend and the backend. I enjoy solving problems through code and love the process of turning ideas into real, working projects. I'm always eager to learn new technologies, improve my skills, and be part of a team where I can contribute and grow as a developer.
+                </p>
+            </div>
+
+            <!-- Projects -->
+            <div class="card">
+                <h2 class="section-title">Projects</h2>
+                <div class="project">
+                    <h3>Jarvis application</h3>
+                    <p><strong>Description:</strong></p>
+                    <p class="project-desc">
+                        I created Jarvis, a simple AI-based virtual assistant using Python, to perform everyday tasks through voice commands. The assistant can search websites, play music, tell the current time and date, and launch applications on my system. It uses speech recognition to understand my commands and gives voice responses using text-to-speech technology.
+                    </p>
+                </div>
+
+                <!-- Skills Section -->
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Frontend:</h4>
+                        <p>HTML, CSS, JavaScript, React js</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend:</h4>
+                        <p>Node.js, Python, Java</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Database:</h4>
+                        <p>MongoDB, MySQL</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools:</h4>
+                        <p>Git, VS Code, Docker, Anaconda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
